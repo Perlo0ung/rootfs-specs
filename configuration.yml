@@ -1,10 +1,24 @@
 ---
 global:
-  use:
-    -: "X doc"
+    use:
+      +: "vim-syntax"
+      -: "X doc"
 
 packages:
-  sys-apps/busybox: {}
+  app-portage/layman: {}
+  app-portage/eix: {}
+  app-editors/vim: {}
+  app-portage/genlop: {}
+  net-misc/ntp: {}
+  sys-apps/iproute2: {}
+  net-analyzer/netcat: {}
+  net-wireless/iw: {}
+  sys-fs/btrfs-progs: {}
 
 pre_install_commands:
   - "emerge --sync"
+
+post_install_commands:
+  - "echo Europe/Berlin > /etc/timezone"
+  - "emerge --config timezone-data"
+#  - "echo 'y' | layman -f -o https://apu.in.htwg-konstanz.de/labworks-embEDUx/portage_overlay/raw/master/portage-embedux.xml -a portage-embedux"
