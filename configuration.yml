@@ -4,20 +4,7 @@ global:
     -: "X doc"
 
 packages:
-  sci-libs/gsl:
-    use:
-      +: "cblas-external"
-  net-wireless/gnuradio:
-    use:
-      +: "alsa analog audio channels ctrlport digital fec filter log pager performance-counters utils vocoder wavelet zeromq"
-      -: "qt4"
-  net-wireless/gr-osmosdr:
-    use:
-      +: "rtlsdr hackrf fcd" 
+  sys-apps/busybox: {}
 
 pre_install_commands:
   - "emerge --sync"
-  - "chown -R portage:portage /usr/local/portage"
-  - "echo 'PORTDIR_OVERLAY=\"/usr/local/portage ${PORTDIR_OVERLAY}\"' >> /etc/portage/make.conf"
-  - "find /usr/local/portage -name \"*.ebuild\" -exec ebuild {} manifest \\;"
-
