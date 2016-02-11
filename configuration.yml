@@ -1,24 +1,16 @@
 ---
 global:
-    use:
-      +: "vim-syntax"
-      -: "X doc"
+  use:
+    -: "X doc"
 
 packages:
-  app-portage/layman: {}
-  app-portage/eix: {}
-  app-editors/vim: {}
-  app-portage/genlop: {}
-  net-misc/ntp: {}
-  sys-apps/iproute2: {}
-  net-analyzer/netcat: {}
-  net-wireless/iw: {}
-  sys-fs/btrfs-progs: {}
-
+  sys-apps/busybox-1.24.1: {}
+  kern-module/mygpio: {}
+  led-test/ledtest: {}
+  
 pre_install_commands:
   - "emerge --sync"
+  - "chown -R portage:portage /usr/local/portage"
+  - "echo 'PORTDIR_OVERLAY=\"/usr/local/portage ${PORTDIR_OVERLAY}\"' >> /etc/portage/make.conf"
+  - "find /usr/local/portage -name \"*.ebuild\" -exec ebuild {} manifest \\;"
 
-post_install_commands:
-  - "echo Europe/Berlin > /etc/timezone"
-  - "emerge --config timezone-data"
-#  - "echo 'y' | layman -f -o https://apu.in.htwg-konstanz.de/labworks-embEDUx/portage_overlay/raw/master/portage-embedux.xml -a portage-embedux"
