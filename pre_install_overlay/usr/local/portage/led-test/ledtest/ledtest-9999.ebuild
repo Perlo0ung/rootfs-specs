@@ -22,8 +22,8 @@ src_unpack() {
 }
 
 src_compile() {
-	einfo "$(tc-getCC) ${LDFLAGS} ${CFLAGS} -o ${PN} ${P}.c"
-	$(tc-getCC) ${LDFLAGS} ${CFLAGS} -o ${PN} ${P}.c || die
+	einfo "$(tc-getCC) ${LDFLAGS} ${CFLAGS} -o ${PN} ${PN}.c"
+	$(tc-getCC) ${LDFLAGS} ${CFLAGS} -o ${PN} ${PN}.c || die
 }
 
 src_install() {
