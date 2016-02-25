@@ -16,12 +16,6 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-S="${WORKDIR}"
-
-src_unpack() {
-	cp "${DISTDIR}"/${A} "${WORKDIR}"/
-}
-
 src_compile() {
 	einfo "$(tc-getCC) ${LDFLAGS} ${CFLAGS} -o ${PN} ${PN}.c"
 	$(tc-getCC) ${LDFLAGS} ${CFLAGS} -o ${PN} ${PN}.c || die
